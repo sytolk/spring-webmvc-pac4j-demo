@@ -23,7 +23,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <error-page>
+    <!--<error-page>
         <error-code>401</error-code>
         <location>/error401.jsp</location>
     </error-page>
@@ -41,5 +41,5 @@
     <error-page>
         <exception-type>java.lang.Exception</exception-type >
         <location>/error500.jsp</location>
-    </error-page>
+    </error-page>-->
 </web-app>

@@ -20,7 +20,7 @@
 <br />
 <a href="logout?url=/?forcepostlogouturl">local logout</a></br>
 <br />
-<a href="centralLogout?url=http://localhost:8080/?forcepostlogouturlafteridp">central logout</a>
+<a href="centralLogout?url=http://dockerhost:8080/?forcepostlogouturlafteridp">central logout</a>
 <br /><br />
 profiles: ${profiles}<br />
 <br />
