@@ -12,3 +12,8 @@ You can build the project and run the web app via jetty on [http://localhost:808
     mvn clean package jetty:run
 
 For your tests, click on the "Protected url by **xxx**" link to start the login process with the **xxx** identity provider...
+
+## You can find generated SP metadata in web server bin dir for example: /opt/apache-tomcat-7.0.70/bin
+```
+<property name="serviceProviderMetadataResourceFilepath" value="sp-metadata.xml" />
+```

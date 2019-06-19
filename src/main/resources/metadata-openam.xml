@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<EntityDescriptor entityID="http://web.local:8088/openam" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
+<EntityDescriptor entityID="http://dockerhost:8088/openam" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
     <IDPSSODescriptor WantAuthnRequestsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
         <KeyDescriptor use="signing">
             <ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
@@ -25,13 +25,13 @@
                 </ds:X509Data>
             </ds:KeyInfo>
         </KeyDescriptor>
-        <ArtifactResolutionService index="0" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://web.local:8088/openam/ArtifactResolver/metaAlias/idp"/>
-        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="http://web.local:8088/openam/IDPSloRedirect/metaAlias/idp" ResponseLocation="http://web.local:8088/openam/IDPSloRedirect/metaAlias/idp"/>
-        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://web.local:8088/openam/IDPSloPOST/metaAlias/idp" ResponseLocation="http://web.local:8088/openam/IDPSloPOST/metaAlias/idp"/>
-        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://web.local:8088/openam/IDPSloSoap/metaAlias/idp"/>
-        <ManageNameIDService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="http://web.local:8088/openam/IDPMniRedirect/metaAlias/idp" ResponseLocation="http://web.local:8088/openam/IDPMniRedirect/metaAlias/idp"/>
-        <ManageNameIDService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://web.local:8088/openam/IDPMniPOST/metaAlias/idp" ResponseLocation="http://web.local:8088/openam/IDPMniPOST/metaAlias/idp"/>
-        <ManageNameIDService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://web.local:8088/openam/IDPMniSoap/metaAlias/idp"/>
+        <ArtifactResolutionService index="0" isDefault="true" Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://dockerhost:8088/openam/ArtifactResolver/metaAlias/idp"/>
+        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="http://dockerhost:8088/openam/IDPSloRedirect/metaAlias/idp" ResponseLocation="http://dockerhost:8088/openam/IDPSloRedirect/metaAlias/idp"/>
+        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://dockerhost:8088/openam/IDPSloPOST/metaAlias/idp" ResponseLocation="http://dockerhost:8088/openam/IDPSloPOST/metaAlias/idp"/>
+        <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://dockerhost:8088/openam/IDPSloSoap/metaAlias/idp"/>
+        <ManageNameIDService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="http://dockerhost:8088/openam/IDPMniRedirect/metaAlias/idp" ResponseLocation="http://dockerhost:8088/openam/IDPMniRedirect/metaAlias/idp"/>
+        <ManageNameIDService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://dockerhost:8088/openam/IDPMniPOST/metaAlias/idp" ResponseLocation="http://dockerhost:8088/openam/IDPMniPOST/metaAlias/idp"/>
+        <ManageNameIDService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://dockerhost:8088/openam/IDPMniSoap/metaAlias/idp"/>
         <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</NameIDFormat>
         <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
         <NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</NameIDFormat>
@@ -39,11 +39,11 @@
         <NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:WindowsDomainQualifiedName</NameIDFormat>
         <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:kerberos</NameIDFormat>
         <NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName</NameIDFormat>
-        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="http://web.local:8088/openam/SSORedirect/metaAlias/idp"/>
-        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://web.local:8088/openam/SSOPOST/metaAlias/idp"/>
-        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://web.local:8088/openam/SSOSoap/metaAlias/idp"/>
-        <NameIDMappingService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://web.local:8088/openam/NIMSoap/metaAlias/idp"/>
-        <AssertionIDRequestService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://web.local:8088/openam/AIDReqSoap/IDPRole/metaAlias/idp"/>
-        <AssertionIDRequestService Binding="urn:oasis:names:tc:SAML:2.0:bindings:URI" Location="http://web.local:8088/openam/AIDReqUri/IDPRole/metaAlias/idp"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="http://dockerhost:8088/openam/SSORedirect/metaAlias/idp"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="http://dockerhost:8088/openam/SSOPOST/metaAlias/idp"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://dockerhost:8088/openam/SSOSoap/metaAlias/idp"/>
+        <NameIDMappingService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://dockerhost:8088/openam/NIMSoap/metaAlias/idp"/>
+        <AssertionIDRequestService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="http://dockerhost:8088/openam/AIDReqSoap/IDPRole/metaAlias/idp"/>
+        <AssertionIDRequestService Binding="urn:oasis:names:tc:SAML:2.0:bindings:URI" Location="http://dockerhost:8088/openam/AIDReqUri/IDPRole/metaAlias/idp"/>
     </IDPSSODescriptor>
 </EntityDescriptor>
