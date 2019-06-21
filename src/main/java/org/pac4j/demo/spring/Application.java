@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -66,28 +66,47 @@ public class Application {
         return "index";
     }
 
-    @RequestMapping("/saml/index.html")
-    public RedirectView saml(final Map<String, Object> map, RedirectAttributes redirectAttributes) {
-        List<SAML2Profile> profile = profileManager.getAll(true);
-        SAML2Profile saml2Profile = profile.get(0);
+    /*@RequestMapping("/saml/index.html")
+    public String saml(final Map<String, Object> map) {
+        map.put("profiles", profileManager.getAll(true));
+        return "protectedIndex";
+    }*/
+
+    @RequestMapping(value = "/saml/index.html", method = RequestMethod.GET)
+    public String saml(final Map<String, Object> map, RedirectAttributes redirectAttributes) { //HttpServletResponse response) {
+        List<SAML2Profile> profiles = profileManager.getAll(true);
+        SAML2Profile saml2Profile = profiles.get(0);
         ArrayList mail = (ArrayList) saml2Profile.getAttribute("emailAddress");
         if (mail != null && !mail.isEmpty()) {
+            /*Cookie cookie = new Cookie("emailAddress", mail.get(0).toString());
+            cookie.setPath("/");
+            response.addCookie(cookie);*/
             redirectAttributes.addAttribute("emailAddress", mail.get(0));
         }
         ArrayList screenName = (ArrayList) saml2Profile.getAttribute("screenName");
         if (screenName != null && !screenName.isEmpty()) {
+            /*Cookie cookie = new Cookie("screenName", screenName.get(0).toString());
+            cookie.setPath("/");
+            response.addCookie(cookie);*/
             redirectAttributes.addAttribute("screenName", screenName.get(0));
         }
         ArrayList firstName = (ArrayList) saml2Profile.getAttribute("firstName");
         if (firstName != null && !firstName.isEmpty()) {
+            /*Cookie cookie = new Cookie("firstName", firstName.get(0).toString());
+            cookie.setPath("/");
+            response.addCookie(cookie);*/
             redirectAttributes.addAttribute("firstName", firstName.get(0));
         }
         ArrayList lastName = (ArrayList) saml2Profile.getAttribute("lastName");
         if (lastName != null && !lastName.isEmpty()) {
+            /*Cookie cookie = new Cookie("lastName", lastName.get(0).toString());
+            cookie.setPath("/");
+            response.addCookie(cookie);*/
             redirectAttributes.addAttribute("lastName", lastName.get(0));
         }
-        //map.put("profiles", profileManager.getAll(true));
-        return new RedirectView("http://dockerhost:8080/c/portal/login"); //?subjectid=AUqHNzUqE8GzeiHE361na+Kw/NAv");
+        map.put("profiles", profiles);
+        return "redirect:http://dockerhost:8080/c/portal/login";
+        //return "protectedIndex";
     }
 
     @RequestMapping("/centralLogout")

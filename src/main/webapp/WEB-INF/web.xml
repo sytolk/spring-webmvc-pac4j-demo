@@ -23,6 +23,11 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--<session-config>
+        <cookie-config>
+            <path>/WEB-INF/jsp/index.jsp</path>
+        </cookie-config>
+    </session-config>-->
     <!--<error-page>
         <error-code>401</error-code>
         <location>/error401.jsp</location>

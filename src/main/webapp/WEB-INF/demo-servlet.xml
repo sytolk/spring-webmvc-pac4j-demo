@@ -29,7 +29,7 @@
         <property name="privateKeyPassword" value="pac4j-demo-passwd" />
         <property name="identityProviderMetadataResourceClasspath" value="metadata-openam.xml" />
         <property name="maximumAuthenticationLifetime" value="3600" />
-        <property name="serviceProviderEntityId" value="http://dockerhost:8082/callback?client_name=SAML2Client" />
+        <property name="serviceProviderEntityId" value="http://dockerhost:8082/saml/callback?client_name=SAML2Client" />
         <property name="serviceProviderMetadataResourceFilepath" value="sp-metadata.xml" />
     </bean>
 
@@ -37,14 +37,14 @@
         <constructor-arg name="configuration" ref="samlConfig" />
     </bean>
 
-    <bean id="clients" class="org.pac4j.core.client.Clients">
+    <!--<bean id="clients" class="org.pac4j.core.client.Clients">
         <constructor-arg name="callbackUrl" value="http://dockerhost:8082/callback" />
         <constructor-arg name="clients">
             <list>
                 <ref bean="saml2Client" />
             </list>
         </constructor-arg>
-    </bean>
+    </bean>-->
 
     <bean id="adminRoleAuthorizer" class="org.pac4j.core.authorization.authorizer.RequireAnyRoleAuthorizer">
         <constructor-arg name="roles" value="ROLE_ADMIN" />
@@ -54,7 +54,9 @@
     </bean>
 
     <bean id="config" class="org.pac4j.core.config.Config">
-        <constructor-arg name="clients" ref="clients" />
+        <constructor-arg name="callbackUrl" value="http://dockerhost:8082/saml/callback" />
+        <constructor-arg name="client" ref="saml2Client" />
+        <!--<constructor-arg name="clients" ref="clients" />-->
         <constructor-arg name="authorizers">
             <map>
                 <entry key="admin" value-ref="adminRoleAuthorizer" />
